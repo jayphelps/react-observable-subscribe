@@ -52,7 +52,7 @@ class Example extends Component {
 
 // This Observable will emit an incrementing
 // number every 100ms
-let = stream Observable.interval(100);
+let stream = Observable.interval(100);
 ReactDOM.render(<Example stream={stream} />, container);
 
 ```
