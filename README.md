@@ -36,11 +36,11 @@ class Example extends Component {
           </div>
         </div>
         <div>
-          <h3>Every 100ms wrapped in &lt;b&gt; element: </h3>
+          <h3>Every 100ms w/ &lt;input&gt; element: </h3>
           <div>
             <Subscribe>
               {this.props.stream.map(
-                num => <b>{num}</b>
+                value => <input value={value} readOnly />
               )}
             </Subscribe>
           </div>
