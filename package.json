@@ -1,6 +1,6 @@
 {
   "name": "react-observable-subscribe",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "<Subscribe> component to automatically consume observables declaratively in JSX",
   "main": "lib/index.js",
   "scripts": {
