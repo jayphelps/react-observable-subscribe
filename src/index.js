@@ -31,6 +31,10 @@ class Subscribe extends Component {
     const { children } = this.props;
     if (children !== undefined || children !== null) {
       this.subscription = childrenToObservable(children).subscribe(element => {
+        if (Array.isArray(element)) {
+          throw new TypeError('<Subscribe> streams cannot return arrays because of React limitations');
+        }
+
         this.setState({ element });
       });
     }
@@ -66,3 +70,7 @@ class Subscribe extends Component {
     );
   }
 }
+
+export const shim = () => {
+
+};
