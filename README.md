@@ -11,9 +11,11 @@ npm install --save react-observable-subscribe
 
 ## Usage
 
-This library default export is a `Subscribe` component which you can use in your JSX to declaratively subscribe and render Observable streams. Just pass the observable as the only child to the the component.
+This library's default export is a `Subscribe` component which you can use in your JSX to declaratively subscribe and render Observable streams. Just pass the observable as the only child to the the component.
 
-```js
+You can apply any operators you want to your observable before passing it to `<Subscribe>`--you don't have to use [RxJS](https://github.com/ReactiveX/rxjs), the only requirement is the the observable supports `observable[Symbol.observable]()` [from the TC39 spec](https://github.com/zenparsing/es-observable#observable). *This library doesn't come with any actual Observable implementation itself.*
+
+```jsx
 import Subscribe from 'react-observable-subscribe';
 // ...other imports
 
@@ -54,6 +56,8 @@ let = stream Observable.interval(100);
 ReactDOM.render(<Example stream={stream} />, container);
 
 ```
-You can apply any operators you want to your observable before passing it to `<Subscribe>`--you don't have to use RxJS, the only requirement is the the observable supports `observable[Symbol.observable]()` from the TC39 spec.
+![ezgif-79206338](https://cloud.githubusercontent.com/assets/762949/14999593/166d7bbe-113f-11e6-9097-69dd24b76781.gif)
 
-When the Observable pumps new values (i.e. onNext) only that section will re-render, not the component in which you declare it, so it's very efficient.
+The observable can emit simple primitives (e.g. strings, numbers) or you can even emit JSX elements! Each "onNext" just needs to be a single value, arrays are not supported because of React limitations.
+
+When the observable emits new values, only the content inside `<Subscribe>` will re-render, not the component in which you declare it, so it's very efficient.
