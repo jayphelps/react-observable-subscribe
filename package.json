@@ -50,6 +50,7 @@
     "react": "*"
   },
   "dependencies": {
+    "exenv": "1.2.1",
     "symbol-observable": "0.2.4"
   }
 }

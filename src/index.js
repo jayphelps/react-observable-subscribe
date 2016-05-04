@@ -1,5 +1,6 @@
 import React, { Component, Children, isValidElement } from 'react';
 import $$observable from 'symbol-observable';
+import { canUseDOM, canUseWorkers } from 'exenv';
 
 const ERROR_NOT_AN_OBSERVABLE = '<Subscribe> only accepts a single child, an Observable that conforms to observable[Symbol.observable]()';
 
@@ -30,6 +31,8 @@ class Subscribe extends Component {
   setupSubscription() {
     const { children } = this.props;
     if (children !== undefined && children !== null) {
+      // Observables may be scheduled async or sync, so this subscribe callback
+      // might immediately run or it it might not.
       this.subscription = childrenToObservable(children).subscribe(element => {
         if (Array.isArray(element)) {
           throw new TypeError('<Subscribe> streams cannot return arrays because of React limitations');
@@ -48,6 +51,13 @@ class Subscribe extends Component {
 
   componentWillMount() {
     this.setupSubscription();
+
+    // When server-side rendering only this lifecycle hook is used so
+    // componentWillUnmount() is NEVER run to dispose of subscription. It's also
+    // pointless to wait for any async values since they won't be rendered.
+    if (!canUseDOM && !canUseWorkers) {
+      this.teardownSubscription();
+    }
   }
 
   componentWillReceiveProps(nextProps) {
