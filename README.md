@@ -61,3 +61,15 @@ ReactDOM.render(<Example stream={stream} />, container);
 The observable can emit simple primitives (e.g. strings, numbers) or you can even emit JSX elements! Each "onNext" just needs to be a single value, arrays are not supported because of React limitations.
 
 When the observable emits new values, only the content inside `<Subscribe>` will re-render, not the component in which you declare it, so it's very efficient.
+
+Depending on your preferences, you might find it helpful to use a shorter name for `Subscribe` when you import it. Since it's the default export, what you name it is totally up to you:
+
+```jsx
+import Sub from 'react-observable-subscribe';
+
+// etc
+
+<div>
+  <Sub>{stream.throttleTime(1000)}</Sub>
+</div>
+```
