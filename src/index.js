@@ -12,7 +12,7 @@ function childrenToObservable(children) {
     children = children[0];
   }
 
-  if (Symbol.observable in children === false) {
+  if ($$observable in children === false) {
     throw new TypeError(ERROR_NOT_AN_OBSERVABLE);
   }
 
