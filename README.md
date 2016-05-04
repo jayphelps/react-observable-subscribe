@@ -73,3 +73,14 @@ import Sub from 'react-observable-subscribe';
   <Sub>{stream.throttleTime(1000)}</Sub>
 </div>
 ```
+## Server-side rendering
+
+If you do Server-side rendering with `React.renderToString`, it's important to note that since React doesn't support asynchronous rendering `<Subscribe>` will `subscribe()` to the stream but then immediately `unsubscribe()`, so any *synchronously emitted* value will be rendered, otherwise nothing. RxJS v5 has the [`startWith(value)`](http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html#instance-method-startWith) operator is one approach to emitting an immediate value.
+
+```jsx
+Observable.ajax('/some/resource/that/will/render/asynchronously')
+  .map(event => event.response) // event == { response: 'async value', ... }
+  .startWith('initial value rendered synchronously')
+```
+
+[Learn more about Schedulers in RxJS](https://github.com/ReactiveX/rxjs/blob/master/doc/scheduler.md)
