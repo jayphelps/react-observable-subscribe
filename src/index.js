@@ -80,7 +80,3 @@ class Subscribe extends Component {
     );
   }
 }
-
-export const shim = () => {
-
-};
