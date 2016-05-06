@@ -13,7 +13,7 @@ npm install --save react-observable-subscribe
 
 This library's default export is a `Subscribe` component which you can use in your JSX to declaratively subscribe and render Observable streams. Just pass the observable as the only child to the the component.
 
-You can apply any operators you want to your observable before passing it to `<Subscribe>`--you don't have to use [RxJS](https://github.com/ReactiveX/rxjs), the only requirement is the the observable supports `observable[Symbol.observable]()` [from the TC39 spec](https://github.com/zenparsing/es-observable#observable). *This library doesn't come with any actual Observable implementation itself.*
+You can apply any operators you want to your observable before passing it to `<Subscribe>`--you don't have to use [RxJS](https://github.com/ReactiveX/rxjs), the only requirement is the the observable supports `observable[Symbol.observable]()` [from the proposed Observable spec](https://github.com/zenparsing/es-observable#observable). *This library doesn't come with any actual Observable implementation itself.*
 
 ```jsx
 import Subscribe from 'react-observable-subscribe';
