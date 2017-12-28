@@ -3,8 +3,6 @@ react-observable-subscribe
 
 Subscribe to an Observable declaratively with the `<Subscribe>{observable}</Subscribe>` component.
 
-<a href="https://app.codesponsor.io/link/zs7vWiDv2F99bX6Ay7PJa5WE/jayphelps/react-observable-subscribe" rel="nofollow"><img src="https://app.codesponsor.io/embed/zs7vWiDv2F99bX6Ay7PJa5WE/jayphelps/react-observable-subscribe.svg" style="width: 888px; height: 68px;" alt="Sponsor" /></a>
-
 ## Install
 
 ```bash
